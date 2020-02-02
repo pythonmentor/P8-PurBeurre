@@ -25,12 +25,15 @@ SECRET_KEY = '-mf%$2_(7=3(bjka70rhbyrd)*thf1%ds$4#in8q%ih(s4-avk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'get_data.apps.GetDataConfig',
+    'search.apps.SearchConfig',
+    'user_favs.apps.UserFavsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -75,9 +78,9 @@ WSGI_APPLICATION = 'purbeurre.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
-        'NAME': 'purbeurre', # le nom de notre base de donnees creee precedemment
-        'USER': 'itwasme', # attention : remplacez par votre nom d'utilisateur
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'purbeurre',
+        'USER': 'itwasme',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '5432',
