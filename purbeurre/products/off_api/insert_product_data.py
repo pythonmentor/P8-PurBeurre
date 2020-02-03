@@ -10,7 +10,7 @@ class ProductData:
             if Product.objects.filter(product_code=product['code']).exists():
                 pass
             else:
-                save_data = Product.objects.create(
+                Product.objects.create(
                     product_code=product.get(
                         'code', None
                         ),
@@ -54,4 +54,3 @@ class ProductData:
                         ),
                     )
                 print('ok prod')
-        return save_data
