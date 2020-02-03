@@ -4,21 +4,15 @@ from django.db import models
 
 
 class Category(models.Model):
-    category = models.CharField(max_length=20)
+    category_name = models.CharField(max_length=20, unique=True)
 
 
 class Product(models.Model):
-    # product_code pk
     product_code = models.BigIntegerField(primary_key=True)
-    # name
     product_name = models.CharField(max_length=50)
-    # category_id
-    product_category_id = models.PositiveSmallIntegerField()
-    # nutriscore
+    product_category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
     product_nutriscore = models.CharField(max_length=1)
-    # urlimage
     product_image_url = models.URLField(max_length=200)    
-    # link
     product_url = models.URLField(max_length=200)
 
     # nutriments_100g VITAMINS ??
