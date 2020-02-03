@@ -31,9 +31,10 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'get_data.apps.GetDataConfig',
+    'products.apps.ProductsConfig',
     'search.apps.SearchConfig',
-    'user_favs.apps.UserFavsConfig',
+    'favorites.apps.FavoritesConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

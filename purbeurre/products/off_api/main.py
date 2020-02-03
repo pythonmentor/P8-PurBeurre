@@ -2,12 +2,13 @@
 
 
 from .insert_product_data import ProductData
+from .insert_categories import Categories
 import requests
 
 
 class Call:
 
-    AMOUNT = '200'
+    AMOUNT = '100'
     category_list = [
         'barres-chocolatees', 'boissons-avec-sucre-ajoute', 'desserts-glaces',
         'desserts-lactes', 'desserts-au-chocolat', 'chocolats',
@@ -32,7 +33,11 @@ class Call:
         data = response.json()
         return data
 
+    @staticmethod
     def insert_data():
         for category in Call.category_list:
+            print(category)
+            save_cat = Categories.insert_categories(category)
             data = Call.fetch_data(category, Call.AMOUNT)
-            ProductData.insert_product_data(data)
+            ProductData.insert_product_data(data,
+                                            save_cat)
