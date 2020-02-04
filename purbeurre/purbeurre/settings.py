@@ -57,7 +57,7 @@ ROOT_URLCONF = 'purbeurre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/purbeurre'],
+        'DIRS': ['core/templates/core'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,10 +126,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-# STATICFILES_STORAGE = '/static/'
-# STATIC_ROOT = 'statcifiles'
-
 STATICFILES_DIRS = (
-    (os.path.join(BASE_DIR, "static")),
+    (os.path.join(BASE_DIR, "core/static")),
 )

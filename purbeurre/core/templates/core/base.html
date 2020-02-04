@@ -12,17 +12,17 @@
   <title>Pur Beurre - Du gras, oui, mais de qualité !</title>
 
   <!-- Font Awesome Icons -->
-  <link href="{% static '/purbeurre/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static '/core/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
 
   <!-- Google Fonts -->
   <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
 
   <!-- Plugin CSS -->
-  <link href="{% static 'purbeurre/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+  <link href="{% static 'core/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="{% static 'purbeurre/css/creative.css' %}" rel="stylesheet">
+  <link href="{% static 'core/css/creative.css' %}" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav"> <!-- fixed-top-->
     <div class="container">
-      <img src="{% static 'purbeurre/img/logos/logo_pur_beurre.svg' %}" height="50px"></img>
+      <img src="{% static 'core/img/logos/logo_pur_beurre.svg' %}" height="50px"></img>
       <a class="navbar-brand js-scroll-trigger ml-5" href="#page-top">Pur Beurre</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -58,22 +58,28 @@
 
 {% endblock %}
   <!-- Footer -->
-  <footer class="bg-light py-5">
+  <footer class="py-3" id="footer">
     <div class="container">
-      <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
+    <divc class="row">
+      <div class="col-sm-6">
+        <div class="text-center text-light">Mentions Légales</div>
+      </div>
+      <div class="col-sm-6">
+        <div class="text-center text-light">Contact</div>
+      </div>
     </div>
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'purbeurre/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'purbeurre/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="{% static 'purbeurre/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'purbeurre/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'core/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'core/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 
   <!-- Custom scripts for this template -->
-  <script src="{% static 'purbeurre/js/creative.min.js' %}"></script>
+  <script src="{% static 'core/js/creative.min.js' %}"></script>
 
 </body>
 
