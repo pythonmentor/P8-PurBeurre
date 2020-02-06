@@ -1,8 +1,9 @@
-from django.http import HttpResponseRedirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+
+from .models import UserForm
+
 # Create your views here.
 
 
@@ -11,4 +12,17 @@ def home(request):
 
 
 def signup(request):
-    return render(request, 'signup.html')
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = User.objects.create_user(
+                username=username, email=email, password=password
+                )
+            user.save()
+        return render(request, 'base.html', {'form': form})
+    else:
+        form = UserForm()
+        return render(request, 'signup.html', {'form': form})
