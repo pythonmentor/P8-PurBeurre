@@ -29,7 +29,7 @@
 <body id="page-top">
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav"> <!-- -->
+  <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav"> <!--fixed-top -->
     <div class="container">
       <a href="/">
         <img src="{% static 'core/img/logos/logo_pur_beurre.svg' %}" height="60px">
@@ -62,7 +62,6 @@
       </div>
     </div>
   </nav>
-{% include 'masthead_section.html' %}
 {% block content%}{% endblock %}
   <!-- Footer -->
   <footer class="py-3 bg-dark" id="footer">
@@ -78,12 +77,12 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'core//node_modules/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'core/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="{% static 'core/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-  <script src="{% static 'core/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'core/js/jquery-easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'core/js/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
 
   <!-- Custom scripts for this template -->
   <script src="{% static 'core/js/creative.min.js' %}"></script>
