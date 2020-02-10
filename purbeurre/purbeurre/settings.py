@@ -129,3 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     (os.path.join(BASE_DIR, "core/static")),
 )
+LOGIN_URL = '/core/templates/core/login.html'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

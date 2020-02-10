@@ -4,13 +4,21 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class UserForm(ModelForm):
+class UserRegistrationForm(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
-        widgets ={
+        widgets = {
             'password': PasswordInput()
         }
+        labels = {
+            'username': 'nom d\'utilisateur',
+            'email': 'email',
+            'password': 'mot de passe'
+        }
+        #help_texts = {
+        #    'username': ''
+        #}
 
 
 class Category(models.Model):
