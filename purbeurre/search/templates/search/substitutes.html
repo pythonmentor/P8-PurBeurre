@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <img src="{{ to_sub.product_image_url }}" alt="{{ to_sub.product_name }}">
+                <p>{{ to_sub.product_name }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card-deck row">
+            {% for sub in subs %}
+                <div class="card col-md-4">
+                    <img class="card-img-top" src="{{ sub.product_image_url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ sub.product_name }}</h5>
+                    <div class="card-footer">
+                        <h1>{{ sub.product_nutriscore }}</h1>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if subs.has_previous %}
+                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page=1">&laquo; first</a>
+                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ subs.number }} of {{ subs.paginator.num_pages }}.
+            </span>
+    
+            {% if subs.has_next %}
+                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.next_page_number }}">next</a>
+                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endblock %}

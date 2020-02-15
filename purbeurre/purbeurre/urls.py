@@ -21,18 +21,10 @@ from search import views as search_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', core_views.home, name='home'),
-    path('signup/', core_views.signup, name='signup'),
-    path(
-        'login/',
-        auth_views.LoginView.as_view(template_name='login.html'),
-    ),
-    path(
-        'logout/',
-        auth_views.LogoutView.as_view(template_name='logout.html'),
-    ),
-    path(
-        'profile/',
-        core_views.profile, name='profile'),
-    path('search/', search_views.search, name='search')
+    path('', core_views.HomePageView.as_view(template_name='base.html'), name='/'),
+    path('signup/', core_views.SignUpView.as_view(), name='signup'),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('search/', search_views.SearchView.as_view(), name='search'),
+    path('search/substitutes/', search_views.SubstituteView.as_view(), name='substitutes')
 ]

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+    {% block content %}
+    <div class="container">
+        <div class="card-deck row">
+            {% for result in results %}
+                <div class="card col-md-4">
+                    <a href="substitutes/?code={{ result.product_code }}&category={{ result.product_category.category_name }}&nutriscore={{ result.product_nutriscore }}" class="stretched-link"></a>
+                    <img class="card-img-top" src="{{ result.product_image_url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ result.product_name }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if results.has_previous %}
+                <a href="?query={{ query }}&page=1">&laquo; first</a>
+                <a href="?query={{ query }}&page={{ results.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ results.number }} of {{ results.paginator.num_pages }}.
+            </span>
+    
+            {% if results.has_next %}
+                <a href="?query={{ query }}&page={{ results.next_page_number }}">next</a>
+                <a href="?query={{ query }}&page={{ results.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endblock %}
+
+    

@@ -1,21 +1,17 @@
 from django.db import models
+from django import forms
 from django.forms import ModelForm, PasswordInput
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 # Create your models here.
 
 
-class UserRegistrationForm(ModelForm):
+class UserRegistrationForm(UserCreationForm):
+    email = forms.email = forms.EmailField(label="Email")
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']
-        widgets = {
-            'password': PasswordInput()
-        }
-        labels = {
-            'username': 'nom d\'utilisateur',
-            'email': 'email',
-            'password': 'mot de passe'
-        }
+        fields = ['username', 'email', 'password1', 'password2']
         #help_texts = {
         #    'username': ''
         #}
@@ -42,3 +38,6 @@ class Product(models.Model):
     product_fibers_100g = models.CharField(max_length=20)
     product_sugars_100g = models.CharField(max_length=20)
     product_proteins_100g = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.product_name

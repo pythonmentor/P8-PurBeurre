@@ -5,6 +5,7 @@ import json
 from django.core import management
 from django.core.management.base import BaseCommand
 from ...models import Product, Category
+from django.db import IntegrityError
 
 
 class Command(BaseCommand):
@@ -15,10 +16,6 @@ class Command(BaseCommand):
         parser.add_argument('amount', type=int)
 
     def handle(self, *args, **option):
-        management.call_command('flush')
-        management.call_command('makemigrations')
-        management.call_command('migrate')
-        # ####COMMENT CA MARCHE#### #
         cat_file = option['cat_file']
         amount = option['amount']
         with open('core/management/commands/'+cat_file+'.json', 'r') as c:
@@ -39,53 +36,57 @@ class Command(BaseCommand):
 
                 for product in data['products']:
                     if not Product.objects.filter(
-                            product_code=product['code']
+                        product_code=product['code']
                             ).exists():
-                        Product.objects.create(
-                            product_code=product.get(
-                                'code', None
-                                ),
-                            product_name=product.get(
-                                'product_name_fr', 'ND'
-                                ),
-                            product_category=Category.objects.get(
-                                category_name=category
-                                ),
-                            product_nutriscore=product.get(
-                                'nutriscore_grade', 'ND'
-                                ),
-                            product_image_url=product.get(
-                                'image_url', 'ND'
-                                ),
-                            product_url=product.get(
-                                'url', 'ND'
-                                ),
-                            # nutriments
-                            product_energy_kj_100g=product['nutriments'].get(
-                                'energy-kj_100g', 'ND'
-                                ),
-                            product_fat_100g=product['nutriments'].get(
-                                'fat_100g', 'ND'
-                                ),
-                            product_saturated_fat_100g=product['nutriments'].get(
-                                'saturated-fat_100g', 'ND'
-                                ),
-                            product_salt_100g=product['nutriments'].get(
-                                'salt_100g', 'ND'
-                                ),
-                            product_carbohydrates_100g=product['nutriments'].get(
-                                'carbohydrates_100g', 'ND'
-                                ),
-                            product_fibers_100g=product['nutriments'].get(
-                                'fiber_100g', 'ND'
-                                ),
-                            product_sugars_100g=product['nutriments'].get(
-                                'sugars_100g', 'ND'
-                                ),
-                            product_proteins_100g=product['nutriments'].get(
-                                'proteins_100g', 'ND'
-                                ),
-                            )
+                        try:
+                            Product.objects.create(
+                                product_code=product.get(
+                                    'code', None
+                                    ),
+                                product_name=product.get(
+                                    'product_name_fr'
+                                    ),
+                                product_category=Category.objects.get(
+                                    category_name=category
+                                    ),
+                                product_nutriscore=product.get(
+                                    'nutriscore_grade'
+                                    ),
+                                product_image_url=product.get(
+                                    'image_url', 'ND'
+                                    ),
+                                product_url=product.get(
+                                    'url', 'ND'
+                                    ),
+                                # nutriments
+                                product_energy_kj_100g=product['nutriments'].get(
+                                    'energy-kj_100g', 'ND'
+                                    ),
+                                product_fat_100g=product['nutriments'].get(
+                                    'fat_100g', 'ND'
+                                    ),
+                                product_saturated_fat_100g=product['nutriments'].get(
+                                    'saturated-fat_100g', 'ND'
+                                    ),
+                                product_salt_100g=product['nutriments'].get(
+                                    'salt_100g', 'ND'
+                                    ),
+                                product_carbohydrates_100g=product['nutriments'].get(
+                                    'carbohydrates_100g', 'ND'
+                                    ),
+                                product_fibers_100g=product['nutriments'].get(
+                                    'fiber_100g', 'ND'
+                                    ),
+                                product_sugars_100g=product['nutriments'].get(
+                                    'sugars_100g', 'ND'
+                                    ),
+                                product_proteins_100g=product['nutriments'].get(
+                                    'proteins_100g', 'ND'
+                                    ),
+                                )
+                        except IntegrityError:  # ESSAYER DE REMPLACER
+                            pass
                     else:
                         pass
+                        
         self.stdout.write('DATABASE SUCCESFULLY LOADED')

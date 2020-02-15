@@ -57,7 +57,7 @@ ROOT_URLCONF = 'purbeurre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['core/templates/core'],
+        'DIRS': ['core/templates/core', 'search/templates/search'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
