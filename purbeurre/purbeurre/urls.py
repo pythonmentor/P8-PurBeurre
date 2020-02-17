@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from core import views as core_views
 from search import views as search_views
+from favorites import views as fav_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('search/', search_views.SearchView.as_view(), name='search'),
-    path('search/substitutes/', search_views.SubstituteView.as_view(), name='substitutes')
+    path('search/substitutes/', fav_views.SubstituteView.as_view(), name='substitutes'),
+    path('save/', fav_views.SaveFavoritesView.as_view(), name='save')
 ]

@@ -15,12 +15,21 @@
                 <div class="card col-md-4">
                     <img class="card-img-top" src="{{ sub.product_image_url }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{ sub.product_name }}</h5>
+                        <p class="card-title">{{ sub.product_name }}</p>
+                    </div>
                     <div class="card-footer">
                         <h1>{{ sub.product_nutriscore }}</h1>
                     </div>
-                    </div>
                 </div>
+                {% if user.is_authenticated %}
+                    <div class="">
+                        <form action="{% url 'save' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" class="button" value="Sauvegarder" name="save">
+                            <input type="hidden" name="code" value="{{ sub.product_code }}">
+                        </form>
+                    </div>
+                {% endif %}
             {% endfor %}
             </div>
         </div>
