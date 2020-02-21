@@ -5,11 +5,14 @@
     <div class="container">
         <div class="card-deck row">
             {% for result in results %}
-                <div class="card col-md-4">
+                <div class="card">
                     <a href="substitutes/?code={{ result.product_code }}&category={{ result.product_category.category_name }}&nutriscore={{ result.product_nutriscore }}" class="stretched-link"></a>
                     <img class="card-img-top" src="{{ result.product_image_url }}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{ result.product_name }}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <h1>{{ result.product_nutriscore }}</h1>
                     </div>
                 </div>
             {% endfor %}

@@ -6,8 +6,12 @@ from django.contrib.auth.models import User
 
 
 class Favorites(models.Model):
-    favorite_code = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.favorite_code)
+        return str(self.product)
+
+    @staticmethod
+    def is_favorite(product, user):
+        return Favorites.objects.filter(product=product, user=user).exists()

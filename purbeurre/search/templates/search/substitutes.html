@@ -12,7 +12,7 @@
         <div class="row">
             <div class="card-deck row">
             {% for sub in subs %}
-                <div class="card col-md-4">
+                <div class="card">
                     <img class="card-img-top" src="{{ sub.product_image_url }}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title">{{ sub.product_name }}</p>
@@ -20,15 +20,15 @@
                     <div class="card-footer">
                         <h1>{{ sub.product_nutriscore }}</h1>
                     </div>
-                </div>
                 {% if user.is_authenticated %}
                     <div class="">
-                        <form action="{% url 'save' %}" method="POST">
+                        <form action="" method="POST">
                             {% csrf_token %}
-                            <input type="submit" class="button" value="Sauvegarder" name="save">
+                            <input type="submit" class="button" value="Sauvegarder" name="save"{% if sub.saved %} disabled {% endif %}>
                             <input type="hidden" name="code" value="{{ sub.product_code }}">
                         </form>
                     </div>
+                </div>
                 {% endif %}
             {% endfor %}
             </div>

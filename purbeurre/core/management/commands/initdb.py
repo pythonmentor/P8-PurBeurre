@@ -50,7 +50,8 @@ class Command(BaseCommand):
                                     category_name=category
                                     ),
                                 product_nutriscore=product.get(
-                                    'nutriscore_grade'
+                                    'nutriscore_grade'                                                                                                                                                         !
+                                    
                                     ),
                                 product_image_url=product.get(
                                     'image_url', 'ND'

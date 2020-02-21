@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import HttpResponse, redirect
 from favorites.models import Favorites
 from core.models import Product
 from django.views.generic.base import View
@@ -9,18 +11,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 #from forms import SaveForm
 
 # Create your views here.
-
-
-class SaveFavoritesView(View):
-
-    def post(self, request, *args, **kwargs):
-        code = self.request.POST.get('code')
-        code = Product.objects.get(pk=code)
-        user = self.request.user.id
-
-        print(code, user)
-        Favorites(favorite_code=code, user_id=user).save()
-        return render(request, template_name='base.html')
 
 
 class SubstituteView(ListView):
@@ -50,4 +40,17 @@ class SubstituteView(ListView):
 
         context_data['to_sub'] = Product.objects.get(product_code=code)
         context_data['subs'] = subs
+
+        for sub in subs:
+            if self.request.user.id:
+                sub.saved = Favorites.is_favorite(sub, self.request.user)
+            else:
+                sub.saved = False
         return context_data
+
+    def post(self, request, *args, **kwargs):
+        code = self.request.POST.get('code')
+        product = Product.objects.get(pk=code)
+        user = self.request.user
+        Favorites(product=product, user=user).save()
+        return redirect(request.get_full_path())
