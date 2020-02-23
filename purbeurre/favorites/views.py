@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import HttpResponse, redirect
-from favorites.models import Favorites
+from favorites.models import Favorite
 from core.models import Product
 from django.views.generic.base import View
 from django.views.generic.list import ListView
@@ -43,7 +43,7 @@ class SubstituteView(ListView):
 
         for sub in subs:
             if self.request.user.id:
-                sub.saved = Favorites.is_favorite(sub, self.request.user)
+                sub.saved = Favorite.is_favorite(sub, self.request.user)
             else:
                 sub.saved = False
         return context_data
@@ -52,5 +52,5 @@ class SubstituteView(ListView):
         code = self.request.POST.get('code')
         product = Product.objects.get(pk=code)
         user = self.request.user
-        Favorites(product=product, user=user).save()
+        Favorite(product=product, user=user).save()
         return redirect(request.get_full_path())

@@ -1,8 +1,16 @@
 // Variables
 
 // Color overrides
-
+/*
+$theme-colors: ( "primary":#E8A75D);
+$theme-colors: ( "info":#DE9440);
+$theme-colors: ( "danger":#C45525);
+$theme-colors: ( "success":#86EBE6);
+$theme-colors: ( "dark":#345A61);
+;
+*/
 // Set a custom color
+
 $orange: #f4623a !default;
 $brown: #5c4d42 !default;
 $rooibos: #C45525;
@@ -13,7 +21,11 @@ $biscuit: #E8A75D;
 
 
 // Set primary color to orange
-$primary: $biscuit !default;
+$primary: $biscuit;
+$info: $caramel;
+$danger: $rooibos;
+$success: $rigolo;
+$dark: $moules;
 
 // Font overrides
 $font-family-sans-serif: "Scope One", sans-serif !default;

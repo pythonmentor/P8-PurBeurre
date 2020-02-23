@@ -13,6 +13,7 @@
             <div class="card-deck row">
             {% for sub in subs %}
                 <div class="card">
+                    <a href="/search/detail/{{ sub.product_code}}" class="stretched-link"></a>
                     <img class="card-img-top" src="{{ sub.product_image_url }}" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-title">{{ sub.product_name }}</p>
@@ -20,6 +21,7 @@
                     <div class="card-footer">
                         <h1>{{ sub.product_nutriscore }}</h1>
                     </div>
+                </div>
                 {% if user.is_authenticated %}
                     <div class="">
                         <form action="" method="POST">
@@ -28,7 +30,6 @@
                             <input type="hidden" name="code" value="{{ sub.product_code }}">
                         </form>
                     </div>
-                </div>
                 {% endif %}
             {% endfor %}
             </div>

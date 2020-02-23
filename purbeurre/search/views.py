@@ -1,22 +1,24 @@
 from django.shortcuts import render
 from core.models import Product
 from django.views.generic.list import ListView
-#from django.views.generic import DetailView
+from django.views.generic import DetailView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 
 class SearchView(ListView):
     model = Product
-    context_object_name = 'results'
+    context_object_name = "results"
     paginate_by = 9
-    template_name = 'search.html'
+    template_name = "search.html"
 
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
-        query = self.request.GET.get('query')
+        query = self.request.GET.get("query")
         queryset = Product.objects.filter(product_name__icontains=query)
-        page = self.request.GET.get('page')
+        page = self.request.GET.get("page")
         paginator = Paginator(queryset, self.paginate_by)
         try:
             results = paginator.page(page)
@@ -25,6 +27,13 @@ class SearchView(ListView):
         except EmptyPage:
             results = paginator.page(paginator.num_pages)
 
-        context['results'] = results
-        context['query'] = query
+        context["results"] = results
+        context["query"] = query
         return context
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'detail.html'
+    slug_field = 'product_code'
+    slug_url_kwarg = 'code'
