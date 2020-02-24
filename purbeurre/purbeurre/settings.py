@@ -57,7 +57,7 @@ ROOT_URLCONF = 'purbeurre.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['core/templates/core', 'search/templates/search'],
+        'DIRS': ['core/templates/core', 'search/templates/search', 'favorites/templates/favorites'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     (os.path.join(BASE_DIR, "core/static")),
 )
-LOGIN_URL = '/core/templates/core/login.html'
+LOGIN_URL = 'login/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

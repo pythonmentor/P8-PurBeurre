@@ -60,3 +60,13 @@ th {
 #footer {
   flex-shrink: 0;
 }
+
+.card {
+  max-width: 20rem !important;
+  border-radius: 0rem !important;
+  box-shadow: 0px 0px 4px 2px #86EBE6 !important;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 10px 5px #86EBE6!important;
+}
