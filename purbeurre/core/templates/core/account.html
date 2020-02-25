@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+        <div class="container-fluid bg-primary">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <div class="overflow-hidden d-flex align-items-center justify-content-center" style="max-height: 300px; min-height: min-content;">
+                        <img class="img w-100" src="{% static '/core/img/backgrounds/bg-masthead.jpg' %}" alt="Card image cap">
+                        <div class="text-center position-absolute bg-info p-3 border-dark border border-2 rounded" style="z-index: 10;">
+                            <h4>Ahoy !</h4>
+                            <h4>{{ user }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 p-5">
+                    <div class="text-center font-weight-normal">
+                        <h4>{{ user.email }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
