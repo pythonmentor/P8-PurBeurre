@@ -2,18 +2,26 @@ from django.db import models
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm, Textarea, EmailField
 # Create your models here.
 
 
 class UserRegistrationForm(UserCreationForm):
-    email = forms.email = forms.EmailField(label="Email")
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
-        #help_texts = {
-        #    'username': ''
-        #}
+        fields = ['username', 'email']
+        labels = {
+            'username': 'Nom d\'Utilisateur',
+            'email': 'Email'
+        }
+        help_texts = {
+            'username': 'Requis. 150 charactères ou moins. Lettres, numéros et @/./+/-/_ seulement.',
+        }
+
+        def __init__(self, *args, **kwargs):
+            super(UserRegistrationForm, self).__init__(*args, **kwargs)
+            self.fields['password1'].label = 'Mot de Passe'
 
 
 class Category(models.Model):

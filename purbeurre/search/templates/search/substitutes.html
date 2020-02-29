@@ -1,55 +1,72 @@
 {% extends 'base.html' %}
+{% load static %}
 
-
-    {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <img src="{{ to_sub.product_image_url }}" alt="{{ to_sub.product_name }}">
-                <p>{{ to_sub.product_name }}</p>
+{% block content %}
+<div class="container-fluid bg-primary">
+    <div class="row">
+        <div class="col-12 p-0">
+            <div class="overflow-hidden d-flex align-items-center justify-content-center" style="max-height: 300px;">
+                <img class="img w-100" src="{{ to_sub.product_image_url }}" alt="{{ to_sub.product_name }}" style="filter: blur(3px); opacity: 0.5;">
+                <div class="text-center position-absolute bg-info p-3 border-dark border border-2 rounded" style="z-index: 10;">
+                    <h4>{{ to_sub.product_name }}</h4>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="card-deck row">
-            {% for sub in subs %}
-                <div class="card">
-                    <a href="/search/detail/{{ sub.product_code}}" class="stretched-link"></a>
-                    <img class="card-img-top" src="{{ sub.product_image_url }}" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-title">{{ sub.product_name }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <h1>{{ sub.product_nutriscore }}</h1>
-                    </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-center my-4">
+        {% for sub in subs %}
+        <div class="col-md-4 col-sm-6 my-4 d-flex justify-content-center">
+            <div class="card d-flex mx-4 mx-xs-3 p-0 shadow-sm shadow border-0 bg-dark text-light">
+                <img class="card-img-top" src="{{ sub.product_image_url }}" alt="{{ sub.product_name }}">
+                <div class="card-body mx-auto text-center align-items-center d-flex ">
+                    <a href="/search/detail/{{ sub.product_code}}">
+                        <h5 class="font-weight-light card-title text-light" href="">{{ sub.product_name }}</h5>
+                    </a>
+                </div>
+                <div class="img position-absolute" style=" top: -1.5rem; right: -2.5rem; max-width: 6rem;">
+                    <img src="{% get_static_prefix %}/core/img/nutriscore/Nutri-score-{{ sub.product_nutriscore }}.svg"
+                        style="height: auto; width: 100%;"></img>
                 </div>
                 {% if user.is_authenticated %}
+                <div class="card-footer">
                     <div class="">
                         <form action="" method="POST">
                             {% csrf_token %}
-                            <input type="submit" class="button" value="Sauvegarder" name="save"{% if sub.saved %} disabled {% endif %}>
+                            <input type="submit" class="btn btn-warning" value="Sauvegarder" name="save" {% if sub.saved %}
+                                disabled {% endif %}>
                             <input type="hidden" name="code" value="{{ sub.product_code }}">
                         </form>
                     </div>
+                </div>
                 {% endif %}
-            {% endfor %}
             </div>
         </div>
+        {% endfor %}
     </div>
-    <div class="pagination">
-        <span class="step-links">
-            {% if subs.has_previous %}
-                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page=1">&laquo; first</a>
-                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.previous_page_number }}">previous</a>
-            {% endif %}
-    
-            <span class="current">
-                Page {{ subs.number }} of {{ subs.paginator.num_pages }}.
-            </span>
-    
-            {% if subs.has_next %}
-                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.next_page_number }}">next</a>
-                <a href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if subs.has_previous %}
+        <a
+            href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page=1">&laquo;
+            first</a>
+        <a
+            href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ subs.number }} of {{ subs.paginator.num_pages }}.
         </span>
-    </div>
-    {% endblock %}
+
+        {% if subs.has_next %}
+        <a
+            href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.next_page_number }}">next</a>
+        <a
+            href="?code={{ to_sub.product_code }}&category={{ to_sub.product_category.category_name }}&nutriscore={{ to_sub.product_nutriscore }}&page={{ subs.paginator.num_pages }}">last
+            &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

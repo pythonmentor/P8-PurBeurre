@@ -30,5 +30,7 @@ urlpatterns = [
     path('search/', search_views.SearchView.as_view(), name='search'),
     path('search/substitutes/', fav_views.SubstituteView.as_view(), name='substitutes'),
     path('search/detail/<code>', search_views.ProductDetailView.as_view(), name='product_detail'),
-    path('favorites/', fav_views.FavoritesView.as_view(), name='favorites')
+    path('favorites/', fav_views.FavoritesView.as_view(), name='favorites'),
+    path('legal-notice/', core_views.LegalNoticeView.as_view(), name='legal-notice')
+    
 ]

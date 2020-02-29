@@ -32,3 +32,7 @@ class AccountView(LoginRequiredMixin, DetailView):
     template_name = 'account.html'
     slug_field = 'username'
     slug_url_kwarg = 'user'
+
+
+class LegalNoticeView(TemplateView):
+    template_name = 'legal_notice.html'
