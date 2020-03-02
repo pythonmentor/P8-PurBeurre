@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class HomePageView(TemplateView):
-    template_name = 'base.html'
+    template_name = 'home.html'
 
 
 class SignUpView(CreateView):

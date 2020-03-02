@@ -1,12 +1,4 @@
 @charset "UTF-8";
-/*
-$theme-colors: ( "primary":#E8A75D);
-$theme-colors: ( "info":#DE9440);
-$theme-colors: ( "danger":#C45525);
-$theme-colors: ( "success":#86EBE6);
-$theme-colors: ( "dark":#345A61);
-;
-*/
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -19,7 +11,7 @@ $theme-colors: ( "dark":#345A61);
   --purple: #6f42c1;
   --pink: #e83e8c;
   --red: #dc3545;
-  --orange: #f4623a;
+  --orange: #fd7e14;
   --yellow: #ffc107;
   --green: #28a745;
   --teal: #20c997;
@@ -30,7 +22,7 @@ $theme-colors: ( "dark":#345A61);
   --primary: #E8A75D;
   --secondary: #6c757d;
   --success: #86EBE6;
-  --info: #DE9440;
+  --info: #de9440;
   --warning: #ffc107;
   --danger: #C45525;
   --light: #f8f9fa;
@@ -2529,8 +2521,8 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #212529;
-  background-color: #DE9440;
-  border-color: #DE9440;
+  background-color: #de9440;
+  border-color: #de9440;
 }
 .btn-info:hover {
   color: #fff;
@@ -2545,8 +2537,8 @@ fieldset:disabled a.btn {
 }
 .btn-info.disabled, .btn-info:disabled {
   color: #212529;
-  background-color: #DE9440;
-  border-color: #DE9440;
+  background-color: #de9440;
+  border-color: #de9440;
 }
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle {
   color: #fff;
@@ -2753,25 +2745,25 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-  color: #DE9440;
-  border-color: #DE9440;
+  color: #de9440;
+  border-color: #de9440;
 }
 .btn-outline-info:hover {
   color: #212529;
-  background-color: #DE9440;
-  border-color: #DE9440;
+  background-color: #de9440;
+  border-color: #de9440;
 }
 .btn-outline-info:focus, .btn-outline-info.focus {
   box-shadow: 0 0 0 0.2rem rgba(222, 148, 64, 0.5);
 }
 .btn-outline-info.disabled, .btn-outline-info:disabled {
-  color: #DE9440;
+  color: #de9440;
   background-color: transparent;
 }
 .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active, .show > .btn-outline-info.dropdown-toggle {
   color: #212529;
-  background-color: #DE9440;
-  border-color: #DE9440;
+  background-color: #de9440;
+  border-color: #de9440;
 }
 .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-info.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(222, 148, 64, 0.5);
@@ -4690,7 +4682,7 @@ a.badge-success:focus, a.badge-success.focus {
 
 .badge-info {
   color: #212529;
-  background-color: #DE9440;
+  background-color: #de9440;
 }
 a.badge-info:hover, a.badge-info:focus {
   color: #212529;
@@ -6034,7 +6026,7 @@ button.bg-success:focus {
 }
 
 .bg-info {
-  background-color: #DE9440 !important;
+  background-color: #de9440 !important;
 }
 
 a.bg-info:hover, a.bg-info:focus,
@@ -6144,7 +6136,7 @@ button.bg-dark:focus {
 }
 
 .border-info {
-  border-color: #DE9440 !important;
+  border-color: #de9440 !important;
 }
 
 .border-warning {
@@ -9707,7 +9699,7 @@ a.text-success:hover, a.text-success:focus {
 }
 
 .text-info {
-  color: #DE9440 !important;
+  color: #de9440 !important;
 }
 
 a.text-info:hover, a.text-info:focus {
@@ -9951,10 +9943,6 @@ th {
 
 .card:hover {
   box-shadow: 0px 0px 10px 5px #86EBE6 !important;
-}
-
-input {
-  width: max-content !important;
 }
 
 #mainNav {
