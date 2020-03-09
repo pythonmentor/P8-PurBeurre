@@ -8,6 +8,8 @@
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="form-control btn btn-danger w-auto">Inscription</button>
+                <hr>
+                <span class="pt-2">Tu as déja un compte ? Connectes toi <a href="/signup" class="text-white">ici</a></span>
             </form>
         </div>
     </div>
