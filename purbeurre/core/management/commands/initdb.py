@@ -1,11 +1,12 @@
 """module to initiate database."""
 
-import requests
 import json
-from django.core import management
+
+import requests
 from django.core.management.base import BaseCommand
-from ...models import Product, Category
 from django.db import IntegrityError
+
+from ...models import Category, Product
 
 
 class Command(BaseCommand):
@@ -26,10 +27,10 @@ class Command(BaseCommand):
                 Category.objects.create(category_name=category)
 
                 url = (
-                        f"https://fr.openfoodfacts.org/cgi/search.pl?action=process"
-                        f"&tagtype_0=categories&tag_contains_0=contains"
-                        f"&tag_0={category}&sort_by=unique_scans_n"
-                        f"&page_size={amount}&json=1"
+                        f"https://fr.openfoodfacts.org/cgi/search.pl?"
+                        f"action=process&tagtype_0=categories&"
+                        f"tag_contains_0=contains&tag_0={category}&"
+                        f"sort_by=unique_scans_n&page_size={amount}&json=1"
                     )
                 response = requests.get(url)
                 data = response.json()
@@ -88,5 +89,5 @@ class Command(BaseCommand):
                             pass
                     else:
                         pass
-                        
+
         self.stdout.write('DATABASE SUCCESFULLY LOADED')

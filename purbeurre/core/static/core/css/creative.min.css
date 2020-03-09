@@ -9937,12 +9937,13 @@ th {
 
 .card {
   max-width: 20rem !important;
+  max-height: 35rem !important;
   border-radius: 0rem !important;
-  box-shadow: 0px 0px 4px 2px #86EBE6 !important;
+  box-shadow: 0px 0px 2px 0px #de9440 !important;
 }
 
 .card:hover {
-  box-shadow: 0px 0px 10px 5px #86EBE6 !important;
+  box-shadow: 0px 0px 10px 5px #de9440 !important;
 }
 
 #mainNav {
@@ -9953,7 +9954,7 @@ th {
 #mainNav .navbar-brand {
   font-family: "Scope One", sans-serif;
   font-weight: 700;
-  color: #212529;
+  color: #f8f9fa;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
   color: #6c757d;
@@ -9971,7 +9972,7 @@ th {
 @media (min-width: 992px) {
   #mainNav {
     box-shadow: none;
-    background-color: transparent;
+    background-color: #C45525;
   }
   #mainNav .navbar-brand {
     color: rgba(255, 255, 255, 0.7);
@@ -9991,13 +9992,13 @@ th {
   }
   #mainNav.navbar-scrolled {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: #E8A75D;
   }
   #mainNav.navbar-scrolled .navbar-brand {
     color: #212529;
   }
   #mainNav.navbar-scrolled .navbar-brand:hover {
-    color: #E8A75D;
+    color: #6c757d;
   }
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link {
     color: #212529;

@@ -63,10 +63,11 @@ th {
 
 .card {
   max-width: 20rem !important;
+  max-height: 35rem !important;
   border-radius: 0rem !important;
-  box-shadow: 0px 0px 4px 2px #86EBE6 !important;
+  box-shadow: 0px 0px 2px 0px #de9440 !important;
 }
 
 .card:hover {
-  box-shadow: 0px 0px 10px 5px #86EBE6!important;
+  box-shadow: 0px 0px 10px 5px #de9440!important;
 }

@@ -1,8 +1,7 @@
-from django.db import models
-from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelForm, Textarea, EmailField
+from django.contrib.auth.models import User
+from django.db import models
+
 # Create your models here.
 
 
@@ -18,10 +17,6 @@ class UserRegistrationForm(UserCreationForm):
         help_texts = {
             'username': 'Requis. 150 charactères ou moins. Lettres, numéros et @/./+/-/_ seulement.',
         }
-
-        def __init__(self, *args, **kwargs):
-            super(UserRegistrationForm, self).__init__(*args, **kwargs)
-            self.fields['password1'].label = 'Mot de Passe'
 
 
 class Category(models.Model):

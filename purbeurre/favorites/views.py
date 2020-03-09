@@ -1,10 +1,9 @@
 from core.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponseRedirect
-from django.shortcuts import HttpResponse, redirect, render
-from django.urls import reverse
-from django.views.generic.base import View
+from django.shortcuts import (get_list_or_404, get_object_or_404,
+                              redirect)
+from django.views.defaults import bad_request
 from django.views.generic.list import ListView
 from favorites.models import Favorite
 
@@ -18,15 +17,30 @@ class SubstituteView(ListView):
     paginate_by = 6
 
     def get_context_data(self, **kwargs):
+        context_data = {}
+        if isinstance(self.request.GET.get('code'), str):
+            code = self.request.GET.get('code')
+        else:
+            return context_data
+
+        if isinstance(self.request.GET.get('category'), str):
+            category = self.request.GET.get('category')
+        else:
+            return context_data
+
+        if self.request.GET.get('nutriscore') in ['a', 'b', 'c', 'd', 'e']:
+            nutriscore = self.request.GET.get('nutriscore')
+        else:
+            return context_data
+
         context_data = super(SubstituteView, self).get_context_data(**kwargs)
-        code = self.request.GET.get('code')
-        category = self.request.GET.get('category')
-        nutriscore = self.request.GET.get('nutriscore')
         page = self.request.GET.get('page')
-        queryset = Product.objects.filter(
-            product_nutriscore__lte=nutriscore,
-            product_category__category_name=category
-            ).order_by('product_nutriscore')
+        queryset = get_list_or_404(
+            Product.objects.filter(
+                product_nutriscore__lte=nutriscore,
+                product_category__category_name=category
+                ).order_by('product_nutriscore')
+            )
         paginator = Paginator(queryset, self.paginate_by)
 
         try:
@@ -48,8 +62,13 @@ class SubstituteView(ListView):
         return context_data
 
     def post(self, request, *args, **kwargs):
-        code = self.request.POST.get('code')
-        product = Product.objects.get(pk=code)
+        try:
+            int(self.request.POST.get('code'))
+            code = self.request.POST.get('code')
+        except ValueError:
+            return bad_request(self.request, ValueError,
+                               template_name='400.html')
+        product = get_object_or_404(Product, pk=code)
         user = self.request.user
         Favorite(product=product, user=user).save()
         return redirect(request.get_full_path())

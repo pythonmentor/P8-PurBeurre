@@ -14,52 +14,52 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid bg-info">
+        <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <div class="rounded-pill bg-primary img-fluid text-center py-5 my-5">
+                    <div class="img-fluid text-center py-5 my-5">
                         <img src="{% get_static_prefix %}/core/img/nutriscore/Nutri-score-{{ product.product_nutriscore }}.svg"></img>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="table-responsive-md my-5 w-75 mx-auto" style="font-family: Open Sans, sans-serif;">
-                        <table class="table table-md table-striped table-borderless">
+                        <table class="table table-md table-striped table-bordered">
                             <thead>
-                                <tr class="bg-danger text-light">
-                                    <th>Valeurs nutritionelles :</th>
+                                <tr class="bg-primary">
+                                    <th class="lead">Valeurs nutritionelles :</th>
                                     <th scope="col">pour 100g</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-primary">
+                                <tr>
                                     <th scope="row">énergie : </th>
                                     <td>{{ product.product_energy_kj_100g }} kJ</td>
                                 </tr>
-                                <tr class="bg-info">
+                                <tr>
                                     <th scope="row">matières grasses : </th>
                                     <td>{{ product.product_fat_100g }} g</td>
                                 </tr>
-                                <tr class="bg-primary">
+                                <tr>
                                     <th scope="row">dont saturées : </th>
                                     <td>{{ product.product_saturated_fat_100g }} g</td>
                                 </tr>
-                                <tr class="bg-info">
+                                <tr>
                                     <th scope="row">sels : </th>
                                     <td>{{ product.product_salt_100g }} g</td>
                                 </tr>
-                                <tr class="bg-primary">
+                                <tr>
                                     <th scope="row">glucides : </th>
                                     <td>{{ product.product_carbohydrates_100g }} g</td>
                                 </tr>
-                                <tr class="bg-info">
+                                <tr>
                                     <th scope="row">dont sucres : </th>
                                     <td>{{ product.product_sugars_100g }} g</td>
                                 </tr>
-                                <tr class="bg-primary">
+                                <tr>
                                     <th scope="row">fibres : </th>
                                     <td>{{ product.product_fibers_100g }} g</td>
                                 </tr>
-                                <tr class="bg-info">
+                                <tr>
                                     <th scope="row">protéines : </th>
                                     <td>{{ product.product_proteins_100g }} g</td>
                                 </tr>
