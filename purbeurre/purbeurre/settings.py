@@ -32,7 +32,7 @@ else:
     DEBUG = True
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-gcLN3B0(j~SBV[&{\x0bOMWS;rs
+
 
 # Application definition
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms'
-]
+]gcLN3B0(j~SBV[&{\x0bOMWS;rs
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
