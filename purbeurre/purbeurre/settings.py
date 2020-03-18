@@ -21,7 +21,8 @@ print(BASE_DIR)
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-mf%$2_(7=3(bjka70rhbyrd)*thf1%ds$4#in8q%ih(s4-avk'
+
+SECRET_KEY = os.environ.get('SECRET_KEY', '-mf%$2_(7=3(bjka70rhbyrd)*thf1%ds$4#in8q%ih(s4-avk')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -89,7 +90,7 @@ DATABASES = {
         'NAME': 'purbeurre',
         'USER': 'itwasme',
         'PASSWORD': '',
-        'HOST': 'postgres',
+        'HOST': '',
         'PORT': '5432',
     }
 }
