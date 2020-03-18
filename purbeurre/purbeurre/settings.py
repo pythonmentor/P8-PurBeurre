@@ -27,11 +27,10 @@ SECRET_KEY = '-mf%$2_(7=3(bjka70rhbyrd)*thf1%ds$4#in8q%ih(s4-avk'
 
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
-    ALLOWED_HOSTS = ['purbeurre-rc.herokuapp.com']
+    
 else:
     DEBUG = True
-    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-
+ALLOWED_HOSTS = ['purbeurre-rc.herokuapp.com']
 
 
 # Application definition
