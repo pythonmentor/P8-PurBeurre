@@ -15,7 +15,7 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
         query = self.request.GET.get("query")
-        queryset = Product.objects.filter(product_name__icontains=query)
+        queryset = Product.objects.filter(product_name__icontains=query).order_by('product_name')
         page = self.request.GET.get("page")
         paginator = Paginator(queryset, self.paginate_by)
         try:
@@ -32,6 +32,6 @@ class SearchView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
-    template_name = 'detail.html'
-    slug_field = 'product_code'
-    slug_url_kwarg = 'code'
+    template_name = "detail.html"
+    slug_field = "product_code"
+    slug_url_kwarg = "code"
