@@ -23,7 +23,7 @@ print(BASE_DIR)
 # SECURITY WARNING: keep the secret key used in production secret!
 
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "-mf%$2_(7=3(bjka70rhbyrd)*thf1%ds$4#in8q%ih(s4-avk"
+    "SECRET_KEY"
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -129,11 +129,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
-STATIC_URL = "/static/"
-
 LOGIN_URL = "login/"
 
 LOGIN_REDIRECT_URL = "/"
@@ -141,14 +136,12 @@ LOGOUT_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, "static"),)
-django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 LOGGING = {
@@ -175,3 +168,7 @@ LOGGING = {
     },
     "loggers": {"testlogger": {"handlers": ["console"], "level": "INFO",}},
 }
+
+# Configure Django App for Heroku.
+
+django_heroku.settings(locals())
